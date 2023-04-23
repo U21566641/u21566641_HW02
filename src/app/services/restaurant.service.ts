@@ -16,7 +16,7 @@ export class RestaurantService {
                 "distance": 1.2,
                 "price": 200,
                 "time": 25,
-                "image": "assets/images/restaurants/popeyes.jpg"
+                "image": "assets/restaurants/popeyes.jpg"
             },
             {
                 "name": "Roscoes",
@@ -25,7 +25,7 @@ export class RestaurantService {
                 "distance": 2.25,
                 "price": 100,
                 "time": 35,
-                "image": "assets/images/restaurants/roscoes.jpg"
+                "image": "../assets/restaurants/roscoes.jpg"
             },
             {
                 "name": "Chick-fil-A",
@@ -34,7 +34,7 @@ export class RestaurantService {
                 "distance": 1.5,
                 "price": 150,
                 "time": 30,
-                "image": "assets/images/restaurants/chick-fil-a.png"
+                "image": "../assets/restaurants/chick-fil-a.png"
             },
             {
                 "name": "Wendy's",
@@ -43,7 +43,7 @@ export class RestaurantService {
                 "distance": 1.2,
                 "price": 200,
                 "time": 20,
-                "image": "assets/images/restaurants/wendys.jpg"
+                "image": "assets/restaurants/wendys.jpg"
             }]
             localStorage.setItem('restaurants', JSON.stringify(restaurants));
         }

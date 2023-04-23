@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { RestaurantService } from '../services/restaurant.service';
+import { restaurant } from '../shared/restaurant';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,22 @@ import { RestaurantService } from '../services/restaurant.service';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  restaurants: restaurant[] = []
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
+    this.GetResturants()
+    console.log(this.restaurants)
+  }
+
+  GetResturants() {
+    this.restaurantService.getRestaurants().subscribe(result => {
+      let resaurantList: any[] = result
+      resaurantList.forEach((element) => {
+        this.restaurants.push(element)
+      });
+    })
+
   }
 
 }

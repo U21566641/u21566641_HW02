@@ -5,4 +5,5 @@ export class restaurant {
     distance!: number;
     price!: number;
     time!: number;
+    image!: string;
 }

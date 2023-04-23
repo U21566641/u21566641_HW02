@@ -11,16 +11,38 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="text-center">
-          <img src="assets/restaurants/default.jpg" width="800px" class="fluid">
-        </div>
 
-      </div>
+  <div class="col-12">
+    <div class="text-center">
+      <img src="assets/images/restaurants/default.jpg" width="900px" class="fluid">
     </div>
   </div>
+  <div *ngFor="let restaurant of restaurants">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src={{restaurant.image}}>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{restaurant.name}}</h2>
+            <h3>{{restaurant.type}}</h3>
+            <h3>{{restaurant.ratings}}<ion-icon name="star-outline"></ion-icon></h3>
+          </ion-label>
+          <ion-label>
+            <h3>{{restaurant.time}} mins</h3>
+          </ion-label>
+          <ion-label>
+            <h3>R{{restaurant.price}} for x</h3>
+          </ion-label>
+          <ion-label>
+            <h3>{{restaurant.distance}} kms away</h3>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 
 
 </ion-content>
