@@ -17,7 +17,8 @@ export class RestaurantService {
                 "distance": 1.2,
                 "price": 200,
                 "time": 25,
-                "image": "assets/restaurants/popeyes.jpg"
+                "image": "assets/images/restaurants/popeyes.jpg",
+                "description": "for two"
             },
             {
                 "id": 2,
@@ -27,7 +28,8 @@ export class RestaurantService {
                 "distance": 2.25,
                 "price": 100,
                 "time": 35,
-                "image": "../assets/restaurants/roscoes.jpg"
+                "image": "../assets/images/restaurants/roscoes.jpg",
+                "description": "for one"
             },
             {
                 "id": 3,
@@ -37,7 +39,8 @@ export class RestaurantService {
                 "distance": 1.5,
                 "price": 150,
                 "time": 30,
-                "image": "../assets/restaurants/chick-fil-a.png"
+                "image": "../assets/images/restaurants/chick-fil-a.png",
+                "description": "for one"
             },
             {
                 "id": 4,
@@ -47,7 +50,8 @@ export class RestaurantService {
                 "distance": 1.2,
                 "price": 200,
                 "time": 20,
-                "image": "assets/restaurants/wendys.jpg"
+                "image": "assets/images/restaurants/wendys.jpg",
+                "description": "for four"
             }]
             localStorage.setItem('restaurants', JSON.stringify(restaurants));
         }

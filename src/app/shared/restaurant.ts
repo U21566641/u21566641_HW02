@@ -7,4 +7,5 @@ export class restaurant {
     price!: number;
     time!: number;
     image!: string;
+    description!: string;
 }

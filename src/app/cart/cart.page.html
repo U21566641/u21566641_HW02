@@ -26,22 +26,22 @@
   <h2 class="section-title">Bill Details</h2>
   <ion-item>
     <ion-label>Item Total</ion-label>
-    <ion-text slot="end">${{ getItemTotal() }}</ion-text>
+    <ion-text slot="end">R{{ getItemTotal() }}</ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Delivery Fee</ion-label>
-    <ion-text slot="end">${{ deliveryFee }}</ion-text>
+    <ion-text slot="end">R{{ deliveryFee }}</ion-text>
   </ion-item>
   <ion-item>
     <ion-label>To Pay</ion-label>
-    <ion-text slot="end">${{ getTotal() }}</ion-text>
+    <ion-text slot="end">R{{ getTotal() }}</ion-text>
   </ion-item>
 
   <ion-footer>
     <div class="footer-container">
       <div class="total">
         <span class="total-text">Total:</span>
-        <span class="total-amount">${{ getTotal() }}</span>
+        <span class="total-amount">R{{ getTotal() }}</span>
       </div>
       <div class="payment-btn-container">
         <ion-button>Make Payment</ion-button>
