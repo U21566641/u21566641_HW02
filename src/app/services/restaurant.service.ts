@@ -10,6 +10,7 @@ export class RestaurantService {
     constructor() {
         if (!localStorage.getItem('restaurants')) {
             let restaurants = [{
+                "id": 1,
                 "name": "Popeyes",
                 "type": "Fast Food",
                 "ratings": 4.5,
@@ -19,6 +20,7 @@ export class RestaurantService {
                 "image": "assets/restaurants/popeyes.jpg"
             },
             {
+                "id": 2,
                 "name": "Roscoes",
                 "type": "Soul Food",
                 "ratings": 4.8,
@@ -28,6 +30,7 @@ export class RestaurantService {
                 "image": "../assets/restaurants/roscoes.jpg"
             },
             {
+                "id": 3,
                 "name": "Chick-fil-A",
                 "type": "Fast Food",
                 "ratings": 5,
@@ -37,6 +40,7 @@ export class RestaurantService {
                 "image": "../assets/restaurants/chick-fil-a.png"
             },
             {
+                "id": 4,
                 "name": "Wendy's",
                 "type": "Fast Food",
                 "ratings": 3.8,
@@ -56,4 +60,6 @@ export class RestaurantService {
         }
         return of(restaurants)
     }
+
+
 }

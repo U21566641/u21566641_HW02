@@ -10,4 +10,17 @@
       <ion-title size="large">search</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="search()" placeholder="Search restaurants"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let restaurant of filteredRestaurants" (click)="addToCart(restaurant)">
+      <ion-label>
+        <h2>{{ restaurant.name }}</h2>
+        <p>Type: {{ restaurant.type }}</p>
+        <p>Rating: {{ restaurant.ratings }}</p>
+        <p>Distance: {{ restaurant.distance }}</p>
+        <p>Price: {{ restaurant.price }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
