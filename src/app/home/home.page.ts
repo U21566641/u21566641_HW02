@@ -14,7 +14,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.GetResturants()
-    console.log(this.restaurants)
   }
 
   GetResturants() {
@@ -25,6 +24,12 @@ export class HomePage implements OnInit {
       });
     })
 
+  }
+
+  addToCart(restaurant: restaurant) {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart.push(restaurant);
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
 }

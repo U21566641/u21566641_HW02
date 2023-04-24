@@ -61,5 +61,14 @@ export class RestaurantService {
         return of(restaurants)
     }
 
+    getCartItems(): Observable<any[]> {
+        let cart: any[] = []
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart') || '{}');
+        }
+        return of(cart)
+    }
+
+
 
 }

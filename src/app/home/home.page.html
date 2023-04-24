@@ -14,10 +14,10 @@
 
   <div class="col-12">
     <div class="text-center">
-      <img src="assets/images/restaurants/default.jpg" width="900px" class="fluid">
+      <img src="assets/images/restaurants/default.jpg" width="600px" class="fluid">
     </div>
   </div>
-  <div *ngFor="let restaurant of restaurants">
+  <div *ngFor="let restaurant of restaurants" (click)="addToCart(restaurant)">
     <ion-card>
       <ion-card-content>
         <ion-item>
