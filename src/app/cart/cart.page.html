@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>cart</ion-title>
+    <ion-title>Cart</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,7 +9,7 @@
 
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">cart</ion-title>
+      <ion-title size="large">Cart</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -36,16 +36,26 @@
     <ion-label>To Pay</ion-label>
     <ion-text slot="end">R{{ getTotal() }}</ion-text>
   </ion-item>
-
-  <ion-footer>
-    <div class="footer-container">
-      <div class="total">
-        <span class="total-text">Total:</span>
-        <span class="total-amount">R{{ getTotal() }}</span>
-      </div>
-      <div class="payment-btn-container">
-        <ion-button>Make Payment</ion-button>
-      </div>
-    </div>
-  </ion-footer>
 </ion-content>
+
+<ion-item>
+  <ion-icon name="home-outline"></ion-icon>
+
+  <ion-item lines="none">
+    <p>Deliver to Office:</p>
+    <p>University of Pretoria</p>
+    <ion-button slot="end" fill="clear">Change</ion-button>
+  </ion-item>
+</ion-item>
+
+<ion-footer>
+  <div class="footer-container">
+    <div class="total">
+      <span class="total-text">Total:</span>
+      <span class="total-amount">R{{ getTotal() }}</span>
+    </div>
+    <div class="payment-btn-container">
+      <ion-button (click)="makePayment()">Make Payment</ion-button>
+    </div>
+  </div>
+</ion-footer>
