@@ -1,0 +1,34 @@
+.section-title {
+    margin: 16px 0;
+    padding-left: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: #f0f0f0;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.total-text {
+    font-weight: bold;
+}
+
+.total-amount {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.payment-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

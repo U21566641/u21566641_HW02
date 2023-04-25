@@ -54,7 +54,20 @@ export class RestaurantService {
                 "description": "for four"
             }]
             localStorage.setItem('restaurants', JSON.stringify(restaurants));
+
         }
+        if (!localStorage.getItem('user')) {
+            let user = {
+                "id": 1,
+                "name": "John",
+                "surname": "Doe",
+                "phoneNumber": "123456789",
+                "email": "johndoe@gmail.com"
+            }
+            localStorage.setItem("user", JSON.stringify(user));
+        }
+
+
     }
 
     getRestaurants(): Observable<any[]> {
@@ -72,6 +85,20 @@ export class RestaurantService {
         }
         return of(cart)
     }
+
+    getUser(): Observable<any> {
+        let user: any = {}
+        if (localStorage.getItem('user')) {
+            user = JSON.parse(localStorage.getItem('user') || '{}');
+        }
+        return of(user)
+    }
+
+    updateUser(user: any) {
+        localStorage.setItem('user', JSON.stringify(user));
+    }
+
+
 
 
 
