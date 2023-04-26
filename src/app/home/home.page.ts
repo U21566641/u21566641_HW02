@@ -27,9 +27,7 @@ export class HomePage implements OnInit {
   }
 
   addToCart(restaurant: restaurant) {
-    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    cart.push(restaurant);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    this.restaurantService.addToCart(restaurant)
   }
 
 }

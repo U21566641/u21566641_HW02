@@ -10,6 +10,8 @@ export class RestaurantService {
     private orderSource = new BehaviorSubject<any[]>([])
     pastOrders = this.orderSource.asObservable()
 
+    private cartSource = new BehaviorSubject<any[]>([])
+    currentCart = this.cartSource.asObservable()
     constructor() {
         if (!localStorage.getItem('restaurants')) {
             let restaurants = [{
@@ -127,5 +129,17 @@ export class RestaurantService {
         return this.pastOrders;
     }
 
+
+    addToCart(restaurant: restaurant) {
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart.push(restaurant);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        this.cartSource.next(cart);
+    }
+
+    clearCart() {
+        localStorage.removeItem('cart');
+        this.cartSource.next([]);
+    }
 
 }

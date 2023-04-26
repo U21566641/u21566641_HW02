@@ -18,7 +18,12 @@ export class CartPage implements OnInit {
   constructor(private restaurantService: RestaurantService, private modalController: ModalController) { }
 
   ngOnInit() {
-    this.GetCartItems()
+    this.restaurantService.currentCart.subscribe((cart: any[]) => {
+      this.cartItems = cart;
+      if (this.cartItems.length > 0) {
+        this.firstImage = this.cartItems[0].image;
+      }
+    });
   }
 
 
@@ -33,10 +38,6 @@ export class CartPage implements OnInit {
       }
     });
   }
-
-
-
-
 
   getItemTotal(): number {
     return this.cartItems.reduce((total, item) => total + item.price, 0);
@@ -61,7 +62,9 @@ export class CartPage implements OnInit {
       component: PaymentModalComponent,
       cssClass: 'payment-modal'
     });
-    return await modal.present();
+    await modal.present()
+    await modal.onDidDismiss()
+    this.restaurantService.clearCart()
   }
 
 }
