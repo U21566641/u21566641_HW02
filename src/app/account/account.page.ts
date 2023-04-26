@@ -34,7 +34,7 @@ export class AccountPage implements OnInit {
 
   reorder(order: any) {
     this.restaurantService.setCart(order.restaurant);
-    this.router.navigate(['/cart']);
+    this.router.navigate(['/tabs/cart']);
   }
 
   async editUser() {

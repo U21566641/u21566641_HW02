@@ -25,13 +25,11 @@ export class CartPage implements OnInit {
 
   GetCartItems() {
     this.restaurantService.getCartItems().subscribe(result => {
-      let resaurantList: any[] = result
-      resaurantList.forEach((element) => {
-        this.cartItems.push(element)
-        this.firstImage = this.cartItems[0].image
-      });
-    })
+      this.cartItems.push(result);
+      this.firstImage = this.cartItems[0].image;
+    });
   }
+
 
 
 
