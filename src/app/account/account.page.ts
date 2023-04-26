@@ -3,6 +3,7 @@ import { RestaurantService } from '../services/restaurant.service';
 import { User } from '../shared/user';
 import { ModalController } from '@ionic/angular';
 import { EditUserModalComponent } from '../edit-user-modal/edit-user-modal.component';
+import { HelpModalComponent } from '../help-modal/help-modal.component';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-account',
@@ -53,5 +54,12 @@ export class AccountPage implements OnInit {
     });
 
     await modal.present();
+  }
+
+  async help() {
+    const modal = await this.modalController.create({
+      component: HelpModalComponent,
+    });
+    return await modal.present();
   }
 }

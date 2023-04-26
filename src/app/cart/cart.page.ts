@@ -24,11 +24,16 @@ export class CartPage implements OnInit {
 
 
   GetCartItems() {
-    this.restaurantService.getCartItems().subscribe(result => {
-      this.cartItems.push(result);
-      this.firstImage = this.cartItems[0].image;
+    this.restaurantService.getCartItems().subscribe((result: any[]) => {
+      if (result && Array.isArray(result)) {
+        this.cartItems = result;
+        if (this.cartItems.length > 0) {
+          this.firstImage = this.cartItems[0].image;
+        }
+      }
     });
   }
+
 
 
 
