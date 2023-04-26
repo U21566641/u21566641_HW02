@@ -18,4 +18,29 @@
     <ion-label>{{user.phoneNumber}} | {{user.email}}</ion-label>
     <ion-button slot="end" (click)="editUser()">Edit</ion-button>
   </ion-item>
+  <ion-item>
+    <ion-icon name="home-outline"></ion-icon>
+    <ion-item lines="none" class="mt-3">
+      <p>Manage Addresses</p>
+    </ion-item>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+  <ion-label class="mx-1">
+    <h2 class="mx-2 text-primary">Past Orders</h2>
+  </ion-label>
+  <ion-item lines="none" *ngFor="let order of orders">
+
+    <ion-item lines="none">
+      <ion-label>
+        {{ order.restaurant.name }}
+        <p class="ion-text-wrap">University of Pretoria, Informatorium</p>
+        <p>R {{order.total}} <ion-icon name="chevron-forward-outline"></ion-icon></p>
+        <p class="mt-3">{{order.timestamp |date:'medium'}} </p>
+      </ion-label>
+
+    </ion-item>
+    <ion-button slot="end" (click)="reorder(order)">Reorder</ion-button>
+    <ion-button slot="end">Get Help</ion-button>
+
+  </ion-item>
 </ion-content>

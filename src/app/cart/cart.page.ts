@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from '../services/restaurant.service';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
+import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ export class CartPage implements OnInit {
   deliveryFee: number = 50;
   firstImage: string = "";
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(private restaurantService: RestaurantService, private modalController: ModalController) { }
 
   ngOnInit() {
     this.GetCartItems()
@@ -40,6 +41,24 @@ export class CartPage implements OnInit {
 
   getTotal(): number {
     return this.getItemTotal() + this.deliveryFee;
+  }
+
+  async makePayment() {
+    const restaurant = this.cartItems[0]
+
+    this.restaurantService.saveOrder({
+      restaurant: restaurant,
+      itemTotal: this.getItemTotal(),
+      deliveryFee: this.deliveryFee,
+      total: this.getTotal(),
+      timestamp: new Date().getTime()
+    });
+
+    const modal = await this.modalController.create({
+      component: PaymentModalComponent,
+      cssClass: 'payment-modal'
+    });
+    return await modal.present();
   }
 
 }

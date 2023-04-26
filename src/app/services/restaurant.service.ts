@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { Observable, of, BehaviorSubject } from "rxjs";
 import { restaurant } from "../shared/restaurant";
 
 @Injectable({
@@ -7,6 +7,9 @@ import { restaurant } from "../shared/restaurant";
 })
 
 export class RestaurantService {
+    private orderSource = new BehaviorSubject<any[]>([])
+    pastOrders = this.orderSource.asObservable()
+
     constructor() {
         if (!localStorage.getItem('restaurants')) {
             let restaurants = [{
@@ -86,6 +89,11 @@ export class RestaurantService {
         return of(cart)
     }
 
+    setCart(restaurant: any) {
+        localStorage.setItem('cart', JSON.stringify(restaurant));
+    }
+
+
     getUser(): Observable<any> {
         let user: any = {}
         if (localStorage.getItem('user')) {
@@ -98,8 +106,26 @@ export class RestaurantService {
         localStorage.setItem('user', JSON.stringify(user));
     }
 
+    saveOrder(order: any) {
 
+        let orders = [];
 
+        if (localStorage.getItem('orders')) {
+            orders = JSON.parse(localStorage.getItem('orders') || '{}');
+        }
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        this.orderSource.next(orders);
+    }
+
+    getOrders(): Observable<any[]> {
+
+        if (localStorage.getItem('orders')) {
+            let pastOrders = JSON.parse(localStorage.getItem('orders') || '{}');
+            this.orderSource.next(pastOrders)
+        }
+        return this.pastOrders;
+    }
 
 
 }

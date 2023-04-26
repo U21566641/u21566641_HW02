@@ -3,6 +3,7 @@ import { RestaurantService } from '../services/restaurant.service';
 import { User } from '../shared/user';
 import { ModalController } from '@ionic/angular';
 import { EditUserModalComponent } from '../edit-user-modal/edit-user-modal.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -10,18 +11,30 @@ import { EditUserModalComponent } from '../edit-user-modal/edit-user-modal.compo
 })
 export class AccountPage implements OnInit {
 
+  orders: any[] = [];
   user: User = new User();
-  constructor(private restaurantService: RestaurantService, private modalController: ModalController) { }
+  constructor(private restaurantService: RestaurantService, private modalController: ModalController, private router: Router) { }
 
   ngOnInit() {
     this.GetUser();
+    this.getOrders();
   }
 
   GetUser() {
     this.restaurantService.getUser().subscribe(result => {
       this.user = result;
-      console.log(result);
     })
+  }
+
+  getOrders() {
+    this.restaurantService.getOrders().subscribe(result => {
+      this.orders = result;
+    });
+  }
+
+  reorder(order: any) {
+    this.restaurantService.setCart(order.restaurant);
+    this.router.navigate(['/cart']);
   }
 
   async editUser() {
