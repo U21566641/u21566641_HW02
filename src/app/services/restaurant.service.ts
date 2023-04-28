@@ -88,11 +88,12 @@ export class RestaurantService {
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart') || '{}');
         }
+
         return of(cart)
     }
 
-    setCart(restaurant: any) {
-        localStorage.setItem('cart', JSON.stringify(restaurant));
+    setCart(items: any[]) {
+        localStorage.setItem('cart', JSON.stringify(items));
     }
 
 

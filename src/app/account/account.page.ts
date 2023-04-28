@@ -34,9 +34,10 @@ export class AccountPage implements OnInit {
   }
 
   reorder(order: any) {
-    this.restaurantService.setCart(order.restaurant);
+    this.restaurantService.addToCart(order.restaurant);
     this.router.navigate(['/tabs/cart']);
   }
+
 
   async editUser() {
     const modal = await this.modalController.create({

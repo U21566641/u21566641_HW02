@@ -3,6 +3,7 @@ import { RestaurantService } from '../services/restaurant.service';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
@@ -18,6 +19,7 @@ export class CartPage implements OnInit {
   constructor(private restaurantService: RestaurantService, private modalController: ModalController) { }
 
   ngOnInit() {
+    this.GetCartItems();
     this.restaurantService.currentCart.subscribe((cart: any[]) => {
       this.cartItems = cart;
       if (this.cartItems.length > 0) {
@@ -26,7 +28,11 @@ export class CartPage implements OnInit {
     });
   }
 
-
+  ionViewWillEnter() {
+    this.GetCartItems()
+    this.itemTotal = this.getItemTotal()
+    this.orderTotal = this.getTotal()
+  }
 
   GetCartItems() {
     this.restaurantService.getCartItems().subscribe((result: any[]) => {
